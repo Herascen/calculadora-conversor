@@ -5,13 +5,17 @@ package Calculos;
 
 
 public class ConversorSNumericos {
-     
+     OperacionesSet operaciones;
     public ConversorSNumericos(){
       
     }
 
 
  private int var=0;
+
+    public OperacionesSet getOperaciones() {
+        return operaciones;
+    }
 
    
 
@@ -57,10 +61,10 @@ public class ConversorSNumericos {
                
            
       while (nume>=basef) {          
-          result = result + nume%basef;
+          result = result + IntToLetter(nume%basef);
           nume = nume/basef;
           if (nume<basef) {
-             result = result + nume;
+             result = result + IntToLetter(nume);
           }
       }
        String invertido = "";
@@ -71,7 +75,12 @@ public class ConversorSNumericos {
      return result;
  }
   public void convertir(String num, int basei, int basef){
-   
+      String numero = basesAdeci(num, basei);
+      if (basef==1) {
+          operaciones = new OperacionesSet(deciAbases(numero, 2),deciAbases(numero, 8), numero, deciAbases(numero, 16));
+      }else{
+          operaciones = new OperacionesSet(numero, deciAbases(numero, basef));
+      }
       
   }
   public int letterToInt(String letter){
@@ -108,6 +117,9 @@ public class ConversorSNumericos {
   }
   public String IntToLetter(int num){
       String letra = "";
+      if (num<10) {
+          letra = letra + num;
+      }else{
       switch(num){
           case 10:
               letra = letra + "A";
@@ -127,7 +139,7 @@ public class ConversorSNumericos {
           case 15:
              letra = letra + "F";
               break;
-      }
+      }}
       return letra;
   }
 }

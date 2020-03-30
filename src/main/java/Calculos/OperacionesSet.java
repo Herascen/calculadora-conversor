@@ -26,7 +26,8 @@ public OperacionesSet(String n, String b){
     public boolean equals (Object other){
     
     OperacionesSet objeto = (OperacionesSet) other;
-    return this.getElementos()[0].equals(objeto.getElementos()[0]);
+    return this.getElementos()[0].equals(objeto.getElementos()[0]) && this.getElementos()[1].equals(objeto.getElementos()[1])
+            && this.getElementos()[2].equals(objeto.getElementos()[2]) && this.getElementos()[3].equals(objeto.getElementos()[3]);
     }
 
     @Override

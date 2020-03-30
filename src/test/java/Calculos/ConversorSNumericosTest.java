@@ -7,6 +7,7 @@ package Calculos;
 
 import java.util.logging.Logger;
 import java.util.stream.Stream;
+import org.junit.jupiter.api.Assertions;
 import  static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -67,17 +68,10 @@ public class ConversorSNumericosTest {
     }
     @Test
     public void testConvertir(){
-
-
-      
-       
-       
-       
-       
-      
-         
-         
-    }
+OperacionesSet esperado = new OperacionesSet("111101", "75", "61", "3D");
+obj.convertir("75", 8, 1);
+        Assertions.assertTrue(esperado.equals(obj.getOperaciones()));
+       }
     
 }
 
