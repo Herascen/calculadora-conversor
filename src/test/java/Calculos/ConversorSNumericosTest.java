@@ -58,7 +58,16 @@ public class ConversorSNumericosTest {
                   
         );
     }
-  
+  static Stream<Arguments> letterToIntProvider(){
+      return Stream.of(
+              arguments("A",10),
+              arguments("7", 7),
+              arguments("F", 15),
+              arguments("1", 1),
+              arguments("C", 12)
+      
+      );
+  }
     @DisplayName("baseAdeciTest")
     @ParameterizedTest
     @MethodSource("baseAdeciProvider")
@@ -76,7 +85,7 @@ public class ConversorSNumericosTest {
       assertEquals(convertido, obj.deciAbases("12", base));
     }
     
-    //falla cuando el string numeros tiene solo dos elementos
+  
     @ParameterizedTest
     @MethodSource("convertirProvider")
     public void testConvertir(int basei, int basef,String num, String[] numeros){
@@ -85,5 +94,16 @@ obj.convertir(num, basei, basef);
         Assertions.assertTrue(esperado.equals(obj.getOperaciones()));
        }
     
+    @ParameterizedTest
+    @MethodSource("letterToIntProvider")
+    public void testletterToInt(String input, int output){
+        assertEquals(output, obj.letterToInt(input));
+    }
+    
+    @ParameterizedTest
+    @MethodSource("letterToIntProvider")
+    public void testIntToLetter(String input, int output){
+        assertEquals(input, obj.IntToLetter(output));
+    }
 }
 
