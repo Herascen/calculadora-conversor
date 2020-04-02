@@ -79,7 +79,7 @@ public class ConversorSNumericos {
       if (basef==1) {
           operaciones = new OperacionesSet(deciAbases(numero, 2),deciAbases(numero, 8), numero, deciAbases(numero, 16));
       }else{
-          operaciones = new OperacionesSet(numero, deciAbases(numero, basef));
+          operaciones = new OperacionesSet(num, deciAbases(numero, basef));
       }
       
   }

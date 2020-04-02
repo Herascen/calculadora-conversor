@@ -17,6 +17,9 @@ public OperacionesSet(String n, String b){
     elementos[1] = b;
 }
 
+public OperacionesSet(String [] elementos){
+    this.elementos = elementos;
+}
    
 
     public String[] getElementos() {

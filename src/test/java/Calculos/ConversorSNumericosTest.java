@@ -51,10 +51,11 @@ public class ConversorSNumericosTest {
     }
     static Stream<Arguments> convertirProvider(){
         return Stream.of(
-                arguments(8,1,"75","111101", "75", "61", "3D"),
-                 arguments(16,1,"798","11110011000","3630","1944","798"),
-                  arguments(2,1,"11010011","11010011","323","211","D3")
-        
+                arguments(8,1,"75",new String []{"111101", "75", "61", "3D"}),
+                 arguments(16,1,"798",new String []{"11110011000","3630","1944","798"}),
+                  arguments(2,1,"11010011",new String []{"11010011","323","211","D3"}),
+                  arguments(16,2,"65F",new String []{"65F","11001011111"})
+                  
         );
     }
   
@@ -74,10 +75,12 @@ public class ConversorSNumericosTest {
     public void testDeciAbases(int base, String convertido){
       assertEquals(convertido, obj.deciAbases("12", base));
     }
+    
+    //falla cuando el string numeros tiene solo dos elementos
     @ParameterizedTest
     @MethodSource("convertirProvider")
-    public void testConvertir(int basei, int basef,String num, String bina, String octal, String deci, String hexa){
-OperacionesSet esperado = new OperacionesSet(bina, octal, deci, hexa);
+    public void testConvertir(int basei, int basef,String num, String[] numeros){
+OperacionesSet esperado = new OperacionesSet(numeros);
 obj.convertir(num, basei, basef);
         Assertions.assertTrue(esperado.equals(obj.getOperaciones()));
        }
